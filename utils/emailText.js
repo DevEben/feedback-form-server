@@ -34,8 +34,8 @@ const generateDynamicEmail = (username, link) => {
               </tr><!-- end tr -->
               <tr>
               <td valign="middle" style="padding: 3em 0 2em 0;">
-              <img src="https://res.cloudinary.com/dx6qmw7w9/image/upload/v1705696901/EchoSphere_Blog_Logo_1_ruywpn.png" alt=""
-              style="width: 200px; max-width: 300px; height: auto; margin: auto; display: block;">
+              <h3 style="display: flex; justify-content: center; align-items: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 20px; color: #141414;">Insight<span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+              font-size: 18px; font-weight: 700; color: #5089c6;">Buddy</span></h3>
               </td>
               </tr><!-- end tr -->
                     <tr>
@@ -59,10 +59,9 @@ const generateDynamicEmail = (username, link) => {
           <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto;">
               <tr>
               <div style="margin: auto; display: flex; justify-content: center; align-items: center; ">
-              <a href="https://echo-sphere-blog.onrender.com" target="_blank">
-                  <div style="width: auto; height: 40px; object-fit: contain; margin: auto; display: flex;">
-                      <img src="https://res.cloudinary.com/dx6qmw7w9/image/upload/v1705696901/EchoSphere_Blog_Logo_2-2_phvzmj.png" alt="">
-                  </div>
+              <a href="#" target="_blank">
+              <h3 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 18px; color: #141414;">Insight<span style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+              font-size: 15px; font-weight: 600; color: #5089c6;">Buddy</span></h3>
               </a>
                   <ul style="font-family: Mona Sans, Helvetica Neue, Helvetica, Arial, sans-serif; Font-size: 15px; Font-weight: 600; Line-height: 20px; color: rgb(13, 12, 34); display: flex; flex-direction: row; justify-content: space-around; list-style-type: none; width: 400px;">
                       <li>For designers</li>

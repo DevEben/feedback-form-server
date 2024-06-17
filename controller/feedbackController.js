@@ -4,14 +4,22 @@ const Feedback = require('../model/feedbackModel');
 const addFeedback = async (req, res) => {
     try {
         const { emoji, feedbackCategory, message } = req.body;
-        if (!emoji || !feedbackCategory || !message) {
+        if ( !feedbackCategory || !message) {
             return res.status(400).json({
                 message: "Please fill out all fields below"
             })
         }
 
+        if (emoji < 0 && emoji >= 5) {
+            return res.status(400).json({
+                message: "Please select an emoji on how you feel!"
+            })
+        }
+
         const feedback = await new Feedback({
-            emoji, feedbackCategory, message
+            emoji: emoji+1, 
+            feedbackCategory, 
+            message
         })
 
         if (!feedback) {
@@ -22,7 +30,8 @@ const addFeedback = async (req, res) => {
 
         await feedback.save();
         return res.status(200).json({
-            message: "Feedback sent successfully! We will work on this, Thanks!"
+            message: "Feedback sent successfully! We will work on this, Thanks!",
+            data: feedback
         });
 
     } catch (error) {

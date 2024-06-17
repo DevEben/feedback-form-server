@@ -5,6 +5,7 @@ const sendMail = require("../utils/email");
 const jwt = require('jsonwebtoken');
 const { generateDynamicEmail } = require("../utils/emailText");
 const { resetFunc } = require('../utils/forgot');
+const verifiedHTML = require('../utils/verified');
 const resetHTML = require('../utils/resetHTML');
 require('dotenv').config();
 
@@ -103,8 +104,9 @@ const verify = async (req, res) => {
 
         // Update the user if verification is successful
         const updatedUser = await AdminModel.findByIdAndUpdate(id, { isVerified: true }, { new: true });
-        res.status(200).send("<h4>You have been successfully verified. Kindly visit the login page.</h4> <script>setTimeout(() => { window.location.href = '/api/v1/login'; }, 5000);</script>");
-        return;
+        // res.status(200).send("<h4>You have been successfully verified. Kindly visit the login page.</h4> <script>setTimeout(() => { window.location.href = '/api/v1/login'; }, 5000);</script>");
+        // return;
+        return res.send(verifiedHTML(req));
 
     } catch (error) {
         if (error instanceof jwt.JsonWebTokenError) {
@@ -116,14 +118,15 @@ const verify = async (req, res) => {
             updatedUser.token = newtoken;
             updatedUser.save();
 
-            const link = `${req.protocol}://${req.get('host')}/api/v1/verify/${id}/${updatedUser.token}`;
+            const link = `${req.protocol}://${req.get('host')}/api/verify/${id}/${updatedUser.token}`;
             sendMail({
                 email: updatedUser.email,
                 html: generateDynamicEmail(updatedUser.username, link),
                 subject: "RE-VERIFY YOUR ACCOUNT"
             });
-            res.status(401).send("<h4>This link is expired. Kindly check your email for another email to verify.</h4><script>setTimeout(() => { window.location.href = '/api/v1/login'; }, 5000);</script>");
-            return;
+            // res.status(401).send("<h4>This link is expired. Kindly check your email for another email to verify.</h4><script>setTimeout(() => { window.location.href = '/api/v1/login'; }, 5000);</script>");
+            // return;
+            return res.send(verifiedHTML(req));
         } else {
             return res.status(500).json({
                 message: "Internal server error: " + error.message,

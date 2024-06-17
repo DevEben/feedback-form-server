@@ -1,8 +1,9 @@
+const { number } = require('@hapi/joi');
 const mongoose = require('mongoose');
 
 const feedbackSchema = new mongoose.Schema({
     emoji: {
-        type: String,
+        type: Number,
         required: true
     },
     feedbackCategory: {
